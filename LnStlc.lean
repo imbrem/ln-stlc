@@ -1,1 +1,2 @@
-import LnStlc.Basic
+import LnStlc.Syntax
+import LnStlc.Deriv
