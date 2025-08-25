@@ -28,7 +28,15 @@ inductive Tm : Type
 /-- The second projection of a pair. -/
 | snd (p : Tm)
 
-/-- The _closure level_ of an STLC term -/
+/-- The _binding depth_ of an STLC term `t`
+
+    This is defined to be the minimal `k` such that `t` is closed at level `k`.
+
+    We say `t` is closed at level `k` if and only if all unbound de Bruijn indices in `t` are `< n`.
+    In particular, the following are equivalent:
+    - `t` is locally closed
+    - `t` is closed at level 0,  i.e. it does not contain any unbound de Bruijn indices.
+    - `t` has binding depth 0 -/
 def Tm.bvi : Tm → ℕ
 | .fv _ => 0
 | .bv i => i + 1
